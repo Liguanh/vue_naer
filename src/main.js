@@ -4,6 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 引入解决兼容性的css文件
+import "./assets/style/reset.css"
+import "./assets/style/border.css"
+import "./assets/style/iconfont.css"
+import "swiper/dist/css/swiper.css";
+
 //引入fastclick
 import Fastclick from 'fastclick'
 Fastclick.attach(document.body)
