@@ -1,69 +1,61 @@
 <template>
-  <div>
+  <div class="banners">
     <swiper :options="swiperOption">
-      <swiper-slide  v-for="(item,index) in swiperList">
-        <img
-          :src="item.imgUrl"
-        />
+      <swiper-slide v-for="(item,index) in swiperList" :key="index">
+        <img :src="item.imgUrl" class="swiper_img" />
       </swiper-slide>
-       <div class="swiper-pagination" slot="pagination"></div> 
+      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-   
   </div>
 </template>
 
 <script>
-
-import { swiper, swiperSlide } from "vue-awesome-swiper";
+import bus from "@/eventBus";
 export default {
-  name: "",
+  name: "SwiperBanner",
+  created() {
+    bus.$on("banner", data => {
+    
+      this.swiperList = data;
+    });
+  },
   data() {
     return {
       swiperOption: {
-         pagination:{
-          el:'.swiper-pagination',
-          clickable:true,
-        },//这样写小圆点就有了
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        }, //这样写小圆点就有了
         autoplay: true,
         speed: 1000,
-        loop: true
-      },
-      swiperList: [
-        {
-          id: "0001",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1801/1a/94428c6dea109402.jpg_640x200_2cf590d8.jpg"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1802/42/7c92b9a381e46402.jpg_640x200_1cdce2a4.jpg"
-        },
-        {
-          id: "0003",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1802/51/e78f936a5b404102.jpg_640x200_c14f0b3a.jpg"
-        },
-        {
-          id: "0004",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1712/91/a275569091681d02.jpg_640x200_0519ccb9.jpg"
+        loop: true,
+        autoplay: {
+          disableOnInteraction: false
         }
-      ]
+      },
+      swiperList: []
     };
   },
-  computed: {},
-  watch: {},
-  methods: {},
-  components: {
-    swiper,
-    swiperSlide
-  }
+  methods: {}
 };
 </script>
 
-<style scoped>
-img {
+<style scoped lang="stylus">
+.banners >>> .swiper-pagination-bullet-active {
+  background-color: #A00000;
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.banners {
+  overflow: hidden;
   width: 100%;
+  height: 0;
+  padding-bottom: 31.25%;
+  background-color: #F8F8F8;
+
+  .swiper_img {
+    width: 100%;
+  }
 }
 </style>

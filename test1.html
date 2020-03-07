@@ -4,11 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文档信息</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+
+        .nav {
+            width: 400px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+
+        .nav li {
+            float: left;
+            text-align: center;
+            line-height: 50px;
+            width: 200px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .active {
+            background: red;
+        }
+
+        .main {
+            position: relative;
+            width: 400px;
+            height: 250px;
+        }
+
+        .log {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 400px;
+            height: 250px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 250px;
+            color: red;
+            border: 1px solid #000;
+            /* display: none; */
+
+        }
+
+        .box {
+            padding-left: 15px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 400px;
+            height: 250px;
+            border: 1px solid #000;
+            display: none;
+        }
+
+        .box p {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .age {
+            text-align: center;
+        }
+
+        .box p:nth-of-type(6) {
+            text-align: center;
+        }
+
+        button {
+            width: 40px;
+            height: 20px;
+            background: #ddd;
+            outline-style: none;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="wrapper">
+        <ul class="nav" id="title">
+            <li class="active">普通会员注册</li>
+            <li>企业会员注册</li>
+        </ul>
+        <div class="main" id="con">
+            <div class="log">
+                登陆成功
+            </div>
+            <div class="box">
+                <p>座机号码:<input onblur="checknumber()" type="text" id="number" placeholder="请输入座机号码"><img id="image"
+                        src="default.png" alt=""><span id="ber_span">格式如0375-666666</span></p>
+                <p>邮&emsp;&emsp;箱:<input onblur="checkemail()" id="email" type="text" placeholder="请输入邮箱"><img id="pic"
+                        src="default.png" alt="">
+                    <span id="num_span">请输入字母数字下划线</span></p>
+                <p>密&emsp;&emsp;码:<input id="pass" onblur="checkpass()" type="password" placeholder="请输入密码"><img
+                        id="code" src="default.png" alt="">
+                    <span id="sure">填写密码</span> <a id="show" href="#">切换</a> </p>
+                <p>确认密码:<input id="passd" type="password" placeholder="请确认密码"><img id="logo" src="default.png"
+                        alt=""><span id="icon">请确认密码</span></p>
+                <p class="age"><input type="checkbox" id="agreement">同意该协议</p>
+                <p class="arr"><button id="btn" disabled="true">登陆</button></p>
 
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    //选项卡
+    //自调用函数
+    var li = document.getElementById('title').children
+    var cont = document.getElementById('con').children
+    for (var i = 0; i < li.length; i++) {
+        (function (index) {
+            li[index].onclick = function () {
+                for (var j = 0; j < li.length; j++) {
+                    li[j].className = ''
+                    cont[j].style.display = 'none'
+                }
+                this.className = 'active'
+                cont[index].style.display = 'block'
+            }
+        })(i)
+    }
 
+
+    //表单验证
+    //1.勾选注册协议 给注册协议的input设置点击事件
+    agreement.onclick = function () {
+        btn.disabled = !this.checked
+    }
+    //2.座机验证  然后进行函数封装
+    function checknumber() {
+        //如果座机input的value为空时
+        if (number.value == '') {
+            //更换src属性 更换图片
+            image.src = "alert.png"
+            //span内的内容进行更换
+            ber_span.innerText = '请输入内容'
+            return false
+        }
+        //正则验证
+        var patt = /^([0-9]{3,4}-)?[0-9]{7,8}$/
+        //如果通过正则验证座机input的value值不正确时
+        if (patt.test(number.value) == false) {
+            //更换图片
+            image.src = "alert.png"
+            //更改span内容
+            ber_span.innerText = '请输入正确内容'
+            return false
+        }
+        //正确的时候更换图片  
+        image.src = "success.png"
+        //更改内容  
+        ber_span.innerText = '正确'
+        return false
+    }
+
+    //3.邮箱
+    function checkemail() {
+        if (email.value == '') {
+            pic.src = "alert.png"
+            num_span.innerText = '请输入内容'
+            return false
+        }
+        var patt1 = /^\w+@[a-zA-Z0-9]{2,5}\.[a-zA-Z]{2,3}$/
+        if (patt1.test(email.value) == false) {
+            pic.src = "alert.png"
+            num_span.innerText = '请输入正确内容'
+            return false
+        }
+        pic.src = "success.png"
+        num_span.innerText = '正确'
+        return false
+
+    }
+
+    //4.密码
+    function checkpass() {
+        if (pass.value == '') {
+            code.src = "alert.png"
+            sure.innerText = '请输入内容'
+            return false
+        }
+        var patt2 = /^[A-Z]\w{5,11}/
+        if (patt2.test(pass.value) == false) {
+            code.src = "alert.png"
+            sure.innerText = '请输入正确内容'
+            return false
+        }
+        code.src = "success.png"
+        sure.innerText = '正确'
+        return true;
+    }
+
+    //确认密码
+    function checkpassd() {
+        console.log()
+        if (passd.value == '') {
+            logo.src = "alert.png"
+            icon.innerText = '请输入内容'
+            return false
+        }
+        if (pass.value !== passd.value) {
+            logo.src = "alert.png"
+            icon.innerText = '请输入正确内容'
+            return false
+        }
+        logo.src = "success.png"
+        icon.innerText = '正确'
+        return false
+    }
+
+    //2.给登陆按钮设置点击事件 然后进行登陆
+    btn.onclick = function () {
+        // var text1 = checknumber();
+        // if (text1 == false) {
+        //     return false
+        // }
+        // var text2 = checkemail();
+        // if (text2 == false) {
+        //     return false
+        // }
+        var text3 = checkpass();
+        if (text3 == false) {
+            return false
+        }
+        var text4 = checkpassd()
+       
+        if (text4 == false) {
+            return false
+        }
+
+        alert("注册成功");
+    }
+
+    show.onclick = function () {
+        if (pass.type == 'password') {
+            pass.type = 'text'
+        } else {
+            pass.type = 'password'
+        }
+    }
+</script>
 </html>

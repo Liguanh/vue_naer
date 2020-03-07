@@ -49,8 +49,16 @@
         "desc": "城市观光"
       }, {
         "id": "0009",
-        "imgUrl": "http://img1.qunarzz.com/piao/fusion/1611/a9/ffc620dbda9b9c02.png",
-        "desc": "一日游"
+        "imgUrl": "https://imgs.qunarzz.com/piao/fusion/1803/67/9a1678221b8e0e02.png",
+        "desc": "古北水镇"
+      },{
+        "id":"0010",
+        "imgUrl":"https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
+        "desc":"一日游"
+      },{
+        "id":"0011",
+        "imgUrl":"https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",
+        "desc":"中国马镇"
       }],
     "recommendList": [{
         "id": "0001",
