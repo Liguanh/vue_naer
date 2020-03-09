@@ -49,7 +49,7 @@ export default {
     position: absolute;
     top: 0.5rem;
     left: 0.2rem;
-    color: #FFF;
+    color: #A00000;
     font-weight: bold;
     font-size: 0.4rem;
   }
