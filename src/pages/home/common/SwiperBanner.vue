@@ -26,7 +26,7 @@ export default {
           el: ".swiper-pagination",
           clickable: true
         }, //这样写小圆点就有了
-        autoplay: true,
+        autoplay: 3000,
         speed: 1000,
         loop: true,
         autoplay: {

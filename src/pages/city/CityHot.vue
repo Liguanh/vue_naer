@@ -118,7 +118,7 @@ export default {
 .word-search{
   position: fixed;
   right: .15rem;
-  top:1rem;
+  top:.8rem;
   width: .5rem;
   text-emphasis after;
   .word-list{

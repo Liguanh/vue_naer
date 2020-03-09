@@ -50,8 +50,10 @@ export default {
       swiperOption: {
         pagination: {
           el: ".swiper-pagination",
-          clickable: true
+          clickable: true,
         }, //这样写小圆点就有了
+        autoplay: 2000,
+        speed:1000,
       }
     };
   },

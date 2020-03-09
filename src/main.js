@@ -9,6 +9,9 @@ import axios from 'axios';
 
 Vue.prototype.$axios = axios;
 
+//axios.defaults.baseURL = "/api";//设置方式
+
+
 // 引入解决兼容性的css文件
 import "./assets/style/reset.css"
 import "./assets/style/border.css"

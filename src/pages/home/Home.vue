@@ -7,7 +7,7 @@
     <SwiperBanner></SwiperBanner>
 
     <!-- 图标区 -->
-    <Icons></Icons>
+    <Icons :icons="indexData.iconList"></Icons>
 
     <!-- 热销区 -->
     <Recommend></Recommend>

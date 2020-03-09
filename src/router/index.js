@@ -8,6 +8,10 @@ import Search from '@/pages/search/Index';
 
 import City  from  '@/pages/city/City';
 
+import Father from '@/views/Father'
+
+import Movie from '@/views/douban/Movie'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +33,14 @@ export default new Router({
       path: "/city",
       name: "city",
       component: City,
+    },{
+      path: "/father",
+      name: "father",
+      component: Father
+    },{
+      path: "/movie",
+      name: "movie",
+      component: Movie
     }
   ]
 })
