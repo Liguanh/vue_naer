@@ -7,6 +7,7 @@ import Home from '@/pages/home/Home'
 import Search from '@/pages/search/Index';
 
 import City  from  '@/pages/city/City';
+import Detail  from  '@/pages/detail/Detail';
 
 import Father from '@/views/Father'
 
@@ -25,6 +26,10 @@ export default new Router({
       path: "/home",
       name: "home",
       component: Home,
+    },{
+      path: "/detail/:id",
+      name: "detail",
+      component: Detail,
     },{
       path: "/search",
       name: "search",

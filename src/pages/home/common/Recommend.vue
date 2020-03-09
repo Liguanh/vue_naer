@@ -10,7 +10,7 @@
                 <div class="hot-item-title">{{item.title}}</div>
                 <div class="hot-item-desc">{{item.desc}}</div>
                 <div class="hot-item-btn">
-                    <button class="more">查看详情</button>
+                    <router-link :to="'/detail/'+item.id" tag="button" class="more">查看详情</router-link>
                 </div>
             </div>
           </div>
