@@ -71,14 +71,14 @@ export default {
     .hot{
         .hot-item{
             overflow :hidden;
-            height : 2.25rem;
+           // height : 2.25rem;
             border-bottom: #d4d4d4 1px solid;
             .hot-item-left{
                 overflow :hidden;
                 float :left;
                 width : 30%;
                 .hot-item-img{
-                    width : 90%;
+                    height  : 100%;
                     margin: .1rem 5%;
                 }
             }
@@ -87,8 +87,9 @@ export default {
                 float :left;
                 display : flex;
                 flex-direction : column ;
+                text-indent : .2rem;
                 width : 70%;
-                padding-bottom:30%;
+                //padding-bottom:30%;
                 .hot-item-title{
                     height :0.7rem;
                     font-size: .4rem;
@@ -118,15 +119,15 @@ export default {
     }
     .week{
         .week-item{
-            height : 4.3rem;
+            //height : 4.3rem;
             overflow :hidden;
 
             .week-item-top{
-                height : 3rem;
+               // height : 3rem;
                 overflow :hidden;
                 .week-item-img{
                     width : 100%;
-                    height :3rem;
+                    //height :3rem;
                 }
             }
 

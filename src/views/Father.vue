@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+      ssdsds
+      <a @click="goto">跳转到首页</a>
        <button @click="kills">销毁</button>
       <select class="sel" v-model="city_ind">
           <option  v-for="(item,index) in city" :key="index">{{index}}</option>
@@ -38,6 +40,9 @@ import other from "./other"
 
 export default {
   name: 'Father',
+  beforeCreate(){
+      console.log(this.city_ind);
+  },
   created(){
       $.ajax({
           url:"/static/mock/city.json",
@@ -68,6 +73,11 @@ export default {
   methods:{
       kills(){
           this.$destroy();
+      },
+      goto(){
+          this.$router.replace({
+              path: "/home"
+          })
       }
   },
   beforeDestroy(){

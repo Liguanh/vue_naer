@@ -41,6 +41,9 @@ export default {
     Recommend
   },
   methods: {
+    goback(){
+      this.$router.go(-1);
+    },
     //获取banner图的列表
     getIndexData() {
       this.$axios({
